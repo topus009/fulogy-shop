@@ -6,7 +6,7 @@
   "description": "fulogy test",
   "repository": {
     "type": "git",
-    "url": "git@github.com:topus009/fulogy.git"
+    "url": "git@github.com:topus009/fulogy-shop.git"
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --color",
@@ -27,7 +27,7 @@
     "node_modules/*"
   ],
   "author": "Sergey Topolov",
-  "homepage": "https://topus009.github.io/fulogy",
+  "homepage": "https://topus009.github.io/fulogy-shop",
   "dependencies": {
     "@hot-loader/react-dom": "^16.8.6",
     "classnames": "^2.2.6",
