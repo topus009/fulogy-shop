@@ -3,7 +3,7 @@ import constants from '../constants/App';
 const { GETSMTH } = constants;
 
 export const initialState = {
-  users: [],
+  smth: [],
 };
 
 export default function app(state = initialState, action) {

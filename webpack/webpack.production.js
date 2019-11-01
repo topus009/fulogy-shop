@@ -2,7 +2,6 @@ const { resolve } = require('path');
 const webpack = require('webpack');
 
 const WebpackBar = require('webpackbar');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
@@ -67,10 +66,7 @@ module.exports = () => {
       new HtmlWebpackPlugin({
         filename: '../public/index.html',
         template: './src/template.html',
-        title: 'Megafon',
-      }),
-      new MiniCssExtractPlugin({
-        filename: 'css/styles.[hash].css',
+        title: 'Fulogy',
       }),
       // new BundleAnalyzerPlugin({
       //   analyzerMode: 'static',

@@ -1,13 +1,12 @@
 const { resolve } = require('path');
 const webpack = require('webpack');
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
 const common = require('./webpack.common');
-const HOST = process.env.HOST;
-const PORT = process.env.PORT;
+
+const { HOST, PORT } = process.env;
 // const PROXY = `http://${HOST}:${PORT}`;
 
 const STATIC = resolve(
@@ -41,12 +40,8 @@ module.exports = () => {
       new HtmlWebpackPlugin({
         template: './src/template.html',
         files: {
-          css: ['style.css'],
           js: ['bundle.js'],
         },
-      }),
-      new MiniCssExtractPlugin({
-        filename: 'css/styles.css',
       }),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.DefinePlugin({ PRODUCTION: false }),
