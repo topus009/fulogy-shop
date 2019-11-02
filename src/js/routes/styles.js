@@ -25,6 +25,7 @@ export default withStyles({
     body: {
       margin: 0,
       padding: 0,
+      backgroundColor: '#F8F9FA',
     },
   },
 })(() => null);

@@ -1,4 +1,4 @@
-import { withStyles, makeStyles } from '@material-ui/core';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles({
   list: {
