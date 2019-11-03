@@ -20,8 +20,9 @@ import useStyles, {
 } from './styles';
 import CustomTabPanel from '../../common/CustomTabPanel';
 import Description from './Description';
-import { STATIC_PATH } from '../../../config/constants';
+import GlowSelect from './GlowSelect';
 import glowData from '../../../fakeData/glowData';
+import { getImgPath } from '../../../helpers';
 
 const StyledTab = withTabStyles(Tab);
 const StyledTabs = withTabsStyles(Tabs);
@@ -32,32 +33,34 @@ const StyledTableCell = withTableCellStyles(TableCell);
 const StyledGlowInfo = withGlowInfoStyles(StyledGridItem);
 const StyledClassTableCell = withClassTableCellStyles(StyledTableCell);
 
-const ImgWrapper = ({ name }) => {
+const ImgWrapper = ({ id, type }) => {
   const classes = useImgStyles();
-  return <img src={`../../${STATIC_PATH}/images/interior-${name}.png`} alt={name} className={classes.root} />;
+  return <img src={getImgPath({ id, type })} alt={`${type}_${id}`} className={classes.root} />;
 };
 
 const { types: tabItems, description, ...restGlowData } = glowData;
 
 const GlowingColor = () => {
   const [value, setValue] = useState(0);
-  const [isDescriptionOpen, setDescriptionOpen] = useState(true);
+  const [valueType, setValueType] = useState('day');
+  const [isDescriptionOpen, setDescriptionOpen] = useState(false);
   const classes = useStyles();
 
   const toggleDescription = () => setDescriptionOpen(!isDescriptionOpen);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  const onVariantChange = (event, newValue) => setValue(newValue);
+
+  const onTypeChange = newValue => setValueType(newValue);
 
   const getImgTabsAndPanelsComponents = () => {
     const tabComponents = [];
     const tabPanelComponents = [];
-    tabItems.forEach(({ id }, index) => {
+    const tabItem = tabItems.find(({ id }) => id === value);
+    tabItem?.variants.forEach((key, index) => {
       tabComponents.push(<StyledTab key={index} wrapped={false} currentTab={value} disableRipple />);
       tabPanelComponents.push(
-        <CustomTabPanel key={index} value={value} index={index}>
-          <ImgWrapper name={id} />
+        <CustomTabPanel key={key} value={value} index={index}>
+          <ImgWrapper id={key} type={valueType} />
         </CustomTabPanel>
       );
     });
@@ -66,6 +69,7 @@ const GlowingColor = () => {
       tabPanelComponents,
     };
   };
+
   const { tabComponents, tabPanelComponents } = getImgTabsAndPanelsComponents();
 
   const getRows = () => {
@@ -79,49 +83,52 @@ const GlowingColor = () => {
 
   return (
     <div className={classes.root}>
-      <StyledGrid container>
-        <StyledGridItem item className={classes.preview}>
-          <StyledTabs
-            value={value}
-            onChange={handleChange}
-            TabIndicatorProps={{
-              style: {
-                display: 'none',
-                StyledClassTableCell,
-              },
-            }}
-          >
-            {tabComponents}
-          </StyledTabs>
-          {tabPanelComponents}
-        </StyledGridItem>
-        <StyledGlowInfo item>
-          <StyledTable>
-            <TableBody>
-              {rows.map(row => (
-                <TableRow key={row.key}>
-                  <StyledTableCell component="th" scope="row">
-                    {row.value[0]}
-                  </StyledTableCell>
-                  {row.key === 'class' ? (
-                    <StyledClassTableCell>
-                      <span>{row.value[1]}</span>
-                    </StyledClassTableCell>
-                  ) : (
-                    <StyledTableCell>{row.value[1]}</StyledTableCell>
-                  )}
-                </TableRow>
-              ))}
-            </TableBody>
-          </StyledTable>
-          <div className={classes.description}>
-            <Fab className={classes.descriptionBtn} onClick={toggleDescription}>
-              i
-            </Fab>
-            <div className={classes.descriptionBtnLabel}>{description[0]}</div>
-          </div>
-        </StyledGlowInfo>
-      </StyledGrid>
+      {!isDescriptionOpen && (
+        <StyledGrid container>
+          <StyledGridItem item className={classes.preview}>
+            <StyledTabs
+              value={value}
+              onChange={onVariantChange}
+              TabIndicatorProps={{
+                style: {
+                  display: 'none',
+                  StyledClassTableCell,
+                },
+              }}
+            >
+              {tabComponents}
+            </StyledTabs>
+            {tabPanelComponents}
+          </StyledGridItem>
+          <StyledGlowInfo item>
+            <StyledTable>
+              <TableBody>
+                {rows.map(row => (
+                  <TableRow key={row.key}>
+                    <StyledTableCell component="th" scope="row">
+                      {row.value[0]}
+                    </StyledTableCell>
+                    {row.key === 'class' ? (
+                      <StyledClassTableCell>
+                        <span>{row.value[1]}</span>
+                      </StyledClassTableCell>
+                    ) : (
+                      <StyledTableCell>{row.value[1]}</StyledTableCell>
+                    )}
+                  </TableRow>
+                ))}
+              </TableBody>
+            </StyledTable>
+            <div className={classes.description}>
+              <Fab className={classes.descriptionBtn} onClick={toggleDescription}>
+                i
+              </Fab>
+              <div className={classes.descriptionBtnLabel}>{description[0]}</div>
+            </div>
+            <GlowSelect onSelect={onTypeChange} items={tabItems} selected={valueType} />
+          </StyledGlowInfo>
+        </StyledGrid>
+      )}
       {isDescriptionOpen && <Description onClose={toggleDescription} description={description[1]} />}
     </div>
   );

@@ -1,16 +1,22 @@
 export default {
   types: [
     {
-      label: 'Теплый',
-      id: 'warm',
-    },
-    {
-      label: 'Дневной',
-      id: 'day',
-    },
-    {
+      id: 0,
+      type: 'cold',
       label: 'Холодный',
-      id: 'cold',
+      variants: [0, 1, 2],
+    },
+    {
+      id: 1,
+      type: 'day',
+      label: 'Дневной',
+      variants: [0, 1, 2],
+    },
+    {
+      id: 2,
+      type: 'warm',
+      label: 'Теплый',
+      variants: [0, 1, 2],
     },
   ],
   class: ['Класс', 'Standart'],

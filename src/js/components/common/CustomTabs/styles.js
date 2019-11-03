@@ -58,6 +58,8 @@ export const withTabStyles = Component =>
     },
     textColorPrimary: {
       color: 'black',
+      backgroundColor: 'white',
+      zIndex: 1,
       '&.Mui-selected': {
         color: 'white',
         backgroundColor: '#00B6FF',
