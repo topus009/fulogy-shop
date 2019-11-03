@@ -13,7 +13,10 @@ export default makeStyles({
     top: '70px',
     '& > div:not([class^="MuiTabs"])': {
       minHeight: '415px',
-      overflowY: 'scroll',
+      overflowY: 'auto',
+      padding: '10px 0',
+      margin: '-10px 0',
+      position: 'relative',
     },
   },
 });

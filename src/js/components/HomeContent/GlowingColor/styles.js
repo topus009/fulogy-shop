@@ -10,6 +10,35 @@ export default makeStyles({
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column-reverse',
+    height: '100%',
+    borderRight: '1px solid lightgray',
+  },
+  description: {
+    backgroundColor: '#00B6FF',
+    height: '68px',
+    display: 'flex',
+    alignItems: 'center',
+    marginTop: '30px',
+  },
+  descriptionBtn: {
+    width: '81px',
+    height: '68px',
+    boxShadow: 'none',
+    borderRadius: 0,
+    textTransform: 'none',
+    backgroundColor: '#00ABF0',
+    color: 'white',
+    fontSize: '2rem',
+    '&:hover': {
+      backgroundColor: '#00a2e3',
+    },
+  },
+  descriptionBtnLabel: {
+    padding: '0 10px',
+    fontSize: '1.2rem',
+    color: 'white',
+    textAlign: 'center',
+    width: '100%',
   },
 });
 
@@ -56,5 +85,60 @@ export const withGridStyles = Component =>
   withStyles({
     root: {
       height: '100%',
+      alignItems: 'center',
+      justifyContent: 'space-around',
+    },
+  })(Component);
+
+export const withTableStyles = Component =>
+  withStyles({
+    root: {
+      maxWidth: '400px',
+      alignSelf: 'center',
+    },
+  })(Component);
+
+export const withGridItemStyles = Component =>
+  withStyles({
+    root: {},
+  })(Component);
+
+export const withTableCellStyles = Component =>
+  withStyles({
+    root: {
+      fontSize: '1.2rem',
+      lineHeight: '1.15rem',
+      border: 'none',
+    },
+  })(Component);
+
+export const withGlowInfoStyles = Component =>
+  withStyles({
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+      flex: 1,
+      '& > table tbody tr th': {
+        width: '220px',
+        padding: '11px 0',
+      },
+      '& > table tbody tr td': {
+        width: '210px',
+        padding: 0,
+        boxSizing: 'border-box',
+      },
+    },
+  })(Component);
+
+export const withClassTableCellStyles = Component =>
+  withStyles({
+    root: {
+      '& > span': {
+        backgroundColor: '#F0F0F0',
+        padding: '5px 10px',
+        borderRadius: '5px',
+        boxShadow: '0px 3px 6px #cccccc',
+        marginLeft: '-5px',
+      },
     },
   })(Component);
