@@ -4,10 +4,8 @@
 
 ## Описание
 
-### Лайф версия доступна по [ссылке](https://topus009.github.io/fulogy/)
-
----
-
-![testovoe](https://topus009.github.io/ets/fulogy.png)
+1. yarn
+2. yarn dev
+3. open http://localhost:8080/
 
 ---
