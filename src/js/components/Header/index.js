@@ -91,7 +91,7 @@ const Header = ({ history }) => {
             edge="start"
             color="inherit"
             aria-label="menu"
-            onClick={e => toggleMenu(true, e)}
+            onClick={e => toggleMenu(!isMenuOpen, e)}
           >
             {renderMenuIcon()}
           </IconButton>

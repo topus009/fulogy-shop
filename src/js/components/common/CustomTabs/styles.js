@@ -11,6 +11,10 @@ export default makeStyles({
     bottom: 0,
     height: 'calc(100% - 70px)',
     top: '70px',
+    '& > div:not([class^="MuiTabs"])': {
+      minHeight: '415px',
+      overflowY: 'scroll',
+    },
   },
 });
 
@@ -60,6 +64,9 @@ export const withTabStyles = Component =>
 
 export const withTabsStyles = Component =>
   withStyles({
+    root: {
+      minHeight: '82px',
+    },
     flexContainer: {
       margin: '0 35px',
       justifyContent: 'center',

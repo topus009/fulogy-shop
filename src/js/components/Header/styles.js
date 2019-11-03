@@ -73,5 +73,6 @@ export const withLogoStyles = Component =>
       margin: 'auto',
       marginLeft: 0,
       height: '50px',
+      cursor: 'pointer',
     },
   })(Component);

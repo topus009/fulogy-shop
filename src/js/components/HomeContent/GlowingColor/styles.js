@@ -6,10 +6,10 @@ export default makeStyles({
     flex: 1,
   },
   preview: {
-    position: 'relative',
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'center',
+    flexDirection: 'column-reverse',
   },
 });
 
@@ -18,7 +18,7 @@ export const withTabStyles = Component =>
     root: {
       minWidth: '10px',
       minHeight: '10px',
-      padding: '0',
+      padding: 0,
       margin: '10px',
     },
     wrapper: {
@@ -36,8 +36,11 @@ export const withTabsStyles = Component =>
   withStyles({
     root: {
       position: 'absolute',
-      bottom: '15%',
       justifyContent: 'center',
+      display: 'flex',
+      height: '417px',
+      alignItems: 'flex-end',
+      marginTop: '-50px',
     },
   })(Component);
 
