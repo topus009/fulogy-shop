@@ -5,12 +5,10 @@ import configureStore from '../store';
 
 export const Store = configureStore();
 
-const Main = () => {
-  return (
-    <Provider store={Store}>
-      <AppRouter />
-    </Provider>
-  );
-};
+const Main = () => (
+  <Provider store={Store}>
+    <AppRouter />
+  </Provider>
+);
 
 export default Main;
