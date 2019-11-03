@@ -25,7 +25,9 @@ const CustomTabs = ({ tabs, defaultTab = 0 }) => {
     const tabComponents = [];
     const tabPanelComponents = [];
     tabs.forEach(({ label, component }, index) => {
-      tabComponents.push(<StyledTab key={index} label={label} {...a11yProps(index)} currentTab={value} />);
+      tabComponents.push(
+        <StyledTab key={index} label={label} {...a11yProps(index)} currentTab={value} wrapped={false} />
+      );
       tabPanelComponents.push(
         <CustomTabPanel key={index} value={value} index={index}>
           {component}

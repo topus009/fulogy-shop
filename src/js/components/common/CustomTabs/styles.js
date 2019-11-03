@@ -62,6 +62,7 @@ export const withTabsStyles = Component =>
   withStyles({
     flexContainer: {
       margin: '0 35px',
+      justifyContent: 'center',
       '& > button:first-child': {
         borderLeft: '1px solid lightgray',
       },

@@ -32,7 +32,6 @@ ets
 # Docker
 Dockerfile
 docker-compose.yml
-public
 coverage
 tests/tests-cache/*
 bundle-report

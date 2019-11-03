@@ -1,5 +1,6 @@
 import React from 'react';
 import CustomTabs from '../components/common/CustomTabs';
+import GlowingColor from '../components/HomeContent/GlowingColor';
 
 const tabItems = [
   {
@@ -24,7 +25,7 @@ const tabItems = [
   },
   {
     label: 'Цвет свечения',
-    component: '6',
+    component: <GlowingColor />,
   },
   {
     label: 'Монтаж',
